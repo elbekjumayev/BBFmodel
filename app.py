@@ -2,10 +2,20 @@ import streamlit as st
 from fastai.vision.all import *
 import plotly.express as px
 import platform 
-import pathlib
 
-plt=platform.system()
-if plt=='Linux': pathlib.WindowsPath=pathlib.PosixPath
+
+from pathlib import Path
+import os
+
+
+if os.name == 'nt':  # Windows
+    path = Path("your/windows/specific/path")
+else:  # Linux/Mac
+    path = Path("your/unix/specific/path")
+
+
+
+
 
 st.title("Ayiq, qushlar va mevalarni aniqlovchi model")
 file=st.file_uploader("Rasmni yuklash", type=['png','jpg','jpeg','gif','webp'])
